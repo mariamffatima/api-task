@@ -1,4 +1,3 @@
-// pages/index.js
 
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
@@ -31,11 +30,11 @@ const Api = () => {
               />
             </div>
             <div>
-              <h2 className='text-xl font-semibold flex justify-start'>{user.first_name} {user.last_name}</h2>
-              <h3 className='text-lg'>{user.email}</h3>
+              <h2 className='text-xl text-black font-semibold flex justify-start'>{user.first_name} {user.last_name}</h2>
+              <h3 className='text-lg text-black'>{user.email}</h3>
              <ul className='flex flex-row space-x-2 '>
-             <li className='text-lg px-2 bg-white  rounded-2xl hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border-blue-300'>{user.employment.key_skill}</li>
-             <li className='text-lg px-2 bg-white rounded-2xl  hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border-blue-300'>{user.id}</li>
+             <li className='text-lg px-2 bg-white text-black rounded-2xl hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border-blue-300'>{user.employment.key_skill}</li>
+             <li className='text-lg px-2 bg-white text-black rounded-2xl  hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border-blue-300'>{user.id}</li>
              </ul>
             </div>
             
@@ -54,8 +53,8 @@ function Navbar() {
   };
 
   return (
-    <nav className='flex justify-between items-center p-3 text-black'>
-      <div className='flex items-center  border-black'>
+    <nav className='flex justify-between flex-row items-center p-3 text-black'>
+      <div className='flex items-center px-2 border-2 border-gray-700 rounded-2xl'>
         <FaSearch className='text-gray-600 mr-2' />
         <input
           type='text'
@@ -66,10 +65,10 @@ function Navbar() {
         />
       </div>
       <div className='space-x-4'>
-        <button className='bg-transparent hover:bg-white text-black font-semibold py-2 px-4 border border-black rounded'>
+        <button className='bg-transparent hover:bg-white text-black font-semibold py-2 px-3 border border-black rounded'>
           Home
         </button>
-        <button className='bg-transparent hover:bg-white text-black font-semibold py-2 px-4 border border-black rounded'>
+        <button className='bg-transparent hover:bg-white text-black font-semibold py-2 px-3 border border-black rounded'>
           Contact
         </button>
       </div>
