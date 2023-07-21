@@ -32,10 +32,10 @@ const Api = () => {
             </div>
             <div>
               <h2 className='text-xl text-black font-semibold flex justify-start'>{user.first_name} {user.last_name}</h2>
-              <h3 className='text-lg text-black hidden md:inline'>{user.email}</h3>
-             <ul className='flex flex-row space-x-2 '>
-             <li className='text-lg px-2 hidden md:inline bg-white text-black rounded-2xl hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border border-gray-600 hover:border-blue-300'>{user.employment.key_skill}</li>
-             <li className='text-lg px-2 bg-white text-black rounded-2xl  hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border border-gray-600 hover:border-blue-300'>{user.id}</li>
+              <h3 className='text-lg text-black hidden lg:inline'>{user.email}</h3>
+             <ul className='flex flex-row flex-wrap space-x-2 '>
+             <li className='text-lg px-2 bg-white text-black rounded-2xl hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border border-gray-600 hover:border-blue-300'>{user.employment.key_skill}</li>
+             <li className='text-lg px-2 bg-white text-black rounded-2xl  hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border border-gray-600 hover:border-blue-300'>{user.subscription.plan}</li>
              </ul>
             </div>
             
