@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+// pages/index.js
+
 import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
+import { FaSearch } from 'react-icons/fa';
 
 const fetchData = async () => {
-  const response = await fetch('https://random-data-api.com/api/users/random_user?size=5');
+  const response = await fetch('https://random-data-api.com/api/users/random_user?size=10');
   const data = await response.json();
   return data;
 };
 
-const IndexPage = () => {
+const Api = () => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
@@ -15,23 +18,77 @@ const IndexPage = () => {
   }, []);
 
   return (
-    <div className="">
-		<h1 className='font-bold text-3xl p-5 font-serif' >Users</h1>
-		<nav>
-			<div className='grid-col-3 '></div>
-			
-		</nav>
-      <ul>
+    <div>
+      <div className='grid grid-cols-1 md:grid-cols-3 mt-16'>
         {userData.map((user) => (
-          <li key={user.id} className="mb-3">
-            <h2 className="text-lg font-semibold">{user.first_name} {user.last_name}</h2>
-            <p>Email: {user.email}</p>
-            <p>Phone: {user.phone_number}</p>
-          </li>
+          <div key={user.id} className='flex bg-slate-100 m-3 h-50  w-50  rounded-2xl space-x-2 py-5 hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border-blue-300'>
+            <div className='w-24 h-24 rounded-full overflow-hidden'>
+              <Image
+                src={user.avatar}
+                alt='image'
+                width={600}
+                height={600}
+              />
+            </div>
+            <div>
+              <h2 className='text-xl font-semibold flex justify-start'>{user.first_name} {user.last_name}</h2>
+              <h3 className='text-lg'>{user.email}</h3>
+             <ul className='flex flex-row space-x-2 '>
+             <li className='text-lg px-2 bg-white  rounded-2xl hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border-blue-300'>{user.employment.key_skill}</li>
+             <li className='text-lg px-2 bg-white rounded-2xl  hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border-blue-300'>{user.id}</li>
+             </ul>
+            </div>
+            
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
 
-export default IndexPage;
+function Navbar() {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  return (
+    <nav className='flex justify-between items-center p-3 text-black'>
+      <div className='flex items-center  border-black'>
+        <FaSearch className='text-gray-600 mr-2' />
+        <input
+          type='text'
+          value={inputValue}
+          onChange={handleChange}
+          className='bg-transparent outline-none text-sm text-gray-800 placeholder-gray-700'
+          placeholder='Search...'
+        />
+      </div>
+      <div className='space-x-4'>
+        <button className='bg-transparent hover:bg-white text-black font-semibold py-2 px-4 border border-black rounded'>
+          Home
+        </button>
+        <button className='bg-transparent hover:bg-white text-black font-semibold py-2 px-4 border border-black rounded'>
+          Contact
+        </button>
+      </div>
+    </nav>
+  );
+}
+
+export default function Home() {
+  return (
+    <main>
+      <title>api rendering</title>
+      
+      <div className='p-3'></div>
+        <h1 className='font-bold text-3xl font-serif p-3'>Users</h1>
+        <Navbar />
+        <div >
+         <Api/>
+        </div>
+      
+    </main>
+  );
+}
