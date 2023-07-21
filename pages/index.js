@@ -1,3 +1,4 @@
+// pages/index.js
 
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
@@ -20,7 +21,7 @@ const Api = () => {
     <div>
       <div className='grid grid-cols-1 md:grid-cols-3 mt-16'>
         {userData.map((user) => (
-          <div key={user.id} className='flex bg-slate-100 m-3 h-50  w-50  rounded-2xl space-x-2 py-5 hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border-blue-300'>
+          <div key={user.id} className='flex bg-slate-100 m-3 h-50  w-50  rounded-2xl space-x-2 py-5 hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border border-gray-600 hover:border-blue-300'>
             <div className='w-24 h-24 rounded-full overflow-hidden'>
               <Image
                 src={user.avatar}
@@ -31,10 +32,10 @@ const Api = () => {
             </div>
             <div>
               <h2 className='text-xl text-black font-semibold flex justify-start'>{user.first_name} {user.last_name}</h2>
-              <h3 className='text-lg text-black'>{user.email}</h3>
+              <h3 className='text-lg text-black hidden md:inline'>{user.email}</h3>
              <ul className='flex flex-row space-x-2 '>
-             <li className='text-lg px-2 bg-white text-black rounded-2xl hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border-blue-300'>{user.employment.key_skill}</li>
-             <li className='text-lg px-2 bg-white text-black rounded-2xl  hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border-blue-300'>{user.id}</li>
+             <li className='text-lg px-2 hidden md:inline bg-white text-black rounded-2xl hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border border-gray-600 hover:border-blue-300'>{user.employment.key_skill}</li>
+             <li className='text-lg px-2 bg-white text-black rounded-2xl  hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg border border-gray-600 hover:border-blue-300'>{user.id}</li>
              </ul>
             </div>
             
@@ -53,8 +54,8 @@ function Navbar() {
   };
 
   return (
-    <nav className='flex justify-between flex-row items-center p-3 text-black'>
-      <div className='flex items-center px-2 border-2 border-gray-700 rounded-2xl'>
+    <nav className='flex  flex-row justify-between items-center p-3 text-black'>
+      <div className='flex items-center px-2 border-2 border-gray-600 hover:cursor-text rounded-xl'>
         <FaSearch className='text-gray-600 mr-2' />
         <input
           type='text'
@@ -64,11 +65,11 @@ function Navbar() {
           placeholder='Search...'
         />
       </div>
-      <div className='space-x-4'>
-        <button className='bg-transparent hover:bg-white text-black font-semibold py-2 px-3 border border-black rounded'>
+      <div className='space-x-3 flex-wrap'>
+        <button className='bg-transparent hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer hover:shadow-lg text-black font-semibold py-2 px-3 border border-black hover:border-blue-500 rounded'>
           Home
         </button>
-        <button className='bg-transparent hover:bg-white text-black font-semibold py-2 px-3 border border-black rounded'>
+        <button className='bg-transparent hidden md:inline hover:bg-white hover:scale-100 hover:border-2 hover:cursor-pointer  hover:shadow-lg text-black font-semibold py-2 px-3 border border-black hover:border-blue-500 rounded'>
           Contact
         </button>
       </div>
@@ -81,8 +82,8 @@ export default function Home() {
     <main>
       <title>api rendering</title>
       
-      <div className='p-3'></div>
-        <h1 className='font-bold text-3xl font-serif p-3'>Users</h1>
+      <div ><h1 className='font-bold text-3xl font-serif p-2'>Users</h1></div>
+        
         <Navbar />
         <div >
          <Api/>
