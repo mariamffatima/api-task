@@ -1,5 +1,3 @@
-// pages/index.js
-
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
